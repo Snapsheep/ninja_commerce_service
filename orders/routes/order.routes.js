@@ -1,9 +1,9 @@
 const express = require('express');
-const productController = require("../controller/orders.controller");
+const orderController = require("../controller/orders.controller");
 const router = express.Router();
 
-router.post('/', productController.createOrder);
-router.delete('/:orderId', productController.cancelOrder);
-router.get('/:orderId', productController.getOrderItem);
+router.post('/', orderController.createOrder);
+router.delete('/:orderId', orderController.cancelOrder);
+router.get('/:orderId', orderController.getOrderItem);
 
 module.exports = router;
