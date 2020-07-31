@@ -1,5 +1,6 @@
 const UserModel = require("../model/users.model");
 const Helper = require("../../util/Helper");
+const { create } = require("../model/users.model");
 
 exports.createUser = async (req, res, next) => {
   try {
@@ -26,7 +27,9 @@ exports.createUser = async (req, res, next) => {
     }
 
     const createModel = await UserModel.create(data);
-    res.status(201).json(createModel);
+    if (createModel) {
+      res.status(201).json({ error: fasle, msg: "success" });
+    }
   } catch (err) {
     res.status(400).json({
       error: true,
