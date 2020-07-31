@@ -24,17 +24,6 @@ const generateToken = id => {
   return token;
 };
 
-const generateToken = id => {
-  const token = jwt.sign(
-    {
-      userId: id
-    },
-    "TokenAuth",
-    { expiresIn: '7d' }
-  );
-  return token;
-};
-
 module.exports = {
   hashPassword,
   comparePassword,

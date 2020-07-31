@@ -1,10 +1,10 @@
 const express = require('express');
-// const mongodb = require('./config/db');
+const mongodb = require('./config/db');
 const port = process.env.port || 4003;
 
 const app = express();
 
-// const userRoutes = require('./routes/user.routes');
+const userRoutes = require('./routes/user.routes');
 
 mongodb.connectDB();
 
@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.send("Hello ninjs commerce");
 });
 
-// app.use('/users', userRoutes);
+app.use('/users', userRoutes);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`);
