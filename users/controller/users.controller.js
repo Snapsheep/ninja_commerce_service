@@ -45,8 +45,6 @@ exports.loginUser = async (req, res, next) => {
   }
 
   const resUser = await UserModel.find({ "email": email });
-  console.log(resUser[0]);
-
 
   if (!Helper.comparePassword(resUser[0].password, password)) {
     return res.status(400).json({
@@ -58,4 +56,11 @@ exports.loginUser = async (req, res, next) => {
   const token = Helper.generateToken(resUser[0]._id);
 
   res.status(200).json({ token });
+}
+
+exports.profileUser = async (req, res, next) => {
+
+  res.status(200).json({ data: "profile" });
+
+
 }
