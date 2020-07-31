@@ -17,9 +17,6 @@ async function verifyToken(req, res, next) {
 
     const rows = await UserModel.find({ "_id": decoded.userId });
 
-    console.log(decoded.userId);
-    console.log(rows);
-
     if (!rows) {
       return res
         .status(400)

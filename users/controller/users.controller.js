@@ -59,8 +59,16 @@ exports.loginUser = async (req, res, next) => {
 }
 
 exports.profileUser = async (req, res, next) => {
+  const userId = req.user.id;
+  console.log(userId);
 
-  res.status(200).json({ data: "profile" });
+  const resProfile = await UserModel.find({ "_id": userId });
+  console.log(resProfile);
 
+  const data = {
+    email: resProfile[0].email,
+    username: resProfile[0].username
+  }
 
+  res.status(200).json({ data });
 }
